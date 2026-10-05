@@ -1,81 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="theme-color" content="#dc0a2d">
+    <title>Kanto Pokédex OS</title>
     <link href="./styles.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div class="container-fluid">
-            <div class="row bg-primary">
-                <div class="col-12 col-md-2 logo-container d-flex justify-content-center">
-                    <img src="img/logo.png" class="img-fluid w-50">
-                    <span class="my-auto">POKEDEX</span>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                </div>
-                <div class="col-12 col-md-8 navbar-container">
-                    <nav class="navbar navbar-expand-lg">
-                        <div class="container-fluid">
-                            
-                            <div class="collapse navbar-collapse" id="navbarNav">
-                                <ul class="navbar-nav main-menu">
-                                    <li class="nav-item">
-                                        <a class="nav-link" aria-current="page" href="#">Home</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">Features</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">Pricing</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">4</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </nav>
-                </div>
-                <div class="col-12 col-md-2">
-
-                </div>
-                 
-            </div>
-        </div>
+    <header class="topbar">
+        <a class="brand" href="#" aria-label="Pokédex, ir al inicio">
+            <img src="img/logo.png" alt="Sensor de Pokédex">
+            <span><strong>POKÉDEX</strong><small>MODEL HANDY909</small></span>
+        </a>
+        <nav class="top-nav" aria-label="Navegación principal">
+            <a class="active" href="#dex">KANTO DEX</a><a href="#data-panel">TYPE MATCHUPS</a><a href="#voice">CRIES ARCHIVE</a><a href="#diagnostics">DIAGNOSTICS</a>
+        </nav>
+        <div class="system-state"><span class="signal"></span> VOX READY</div>
     </header>
     <main>
-        <div class="container-fluid">
-         
-                <div class="row p-3">
-                    <div class="col-12">
-                        <form class="row">
-                            <div class="col-4">
-                                <div class="input-group form-search-input-container">
-                                    <span class="input-group-text">
-                                        <i class="bi bi-search"></i>
-                                    </span>
-                                    <input type="text" class="form-control" placeholder="Pokemon" name="pokemonSearch">
-                                </div>
-                               
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col-12" style="background-color: yellow;">
-                        
-                    </div>
-                </div>  
-              
-        </div>
+        <section class="utility-deck">
+            <div class="search-wrap"><span class="search-icon">⌕</span><input id="pokemon-search" type="search" autocomplete="off" placeholder="BUSCAR POKÉMON (Nº O NOMBRE)..." aria-label="Buscar Pokémon"><div id="search-results" class="search-results"></div><button id="clear-search" type="button">RESET</button></div>
+            <div class="filters" aria-label="Filtrar por tipo"><span>FILTRO:</span><button class="type-filter active" data-type="all">TODOS</button><button class="type-filter" data-type="grass">PLANTA</button><button class="type-filter" data-type="fire">FUEGO</button><button class="type-filter" data-type="water">AGUA</button><button class="type-filter" data-type="electric">ELÉC</button><button class="type-filter" data-type="psychic">PSI</button></div>
+            <button class="voice-button" id="voice" type="button"><span id="voice-pulse"></span> VOZ DE DEXTER <span>◖</span></button>
+        </section>
+        <section class="pokedex-shell" id="dex">
+            <div class="shell-top"><div class="sensor"><div class="lens"></div></div><div class="leds"><i></i><i></i><i></i></div><div class="stamp">KANTO OS · HANDY909<br><small>REPLICATOR UNIT // DUAL-BUS ARCH</small></div></div>
+            <div class="pokedex-grid">
+                <section class="left-wing">
+                    <div class="screen-bezel"><div class="screen-meta"><span>● ●</span><b>SCAN-CAM MATRIX</b></div><div class="lcd-screen"><div class="lcd-head"><b id="screen-id">ID: #025</b><b id="screen-name">PIKACHU</b><span>MODE: OPTIC-CAPTURE ◉</span></div><div class="art-stage"><div class="scan-glow"></div><img id="pokemon-art" alt="Ilustración del Pokémon seleccionado"></div><div class="wave"><span>≋ CRY SYNTH:</span><i></i><i></i><i></i><i></i><i></i><i></i></div></div><div class="speaker">● <span></span></div></div>
+                    <div class="jump-buttons"><button id="prev-pokemon">← <span>#024 ARBOK</span></button><button id="next-pokemon"><span>#026 RAICHU</span> →</button></div>
+                    <div class="hardware-row"><button class="info-button" id="info-button" type="button">INFO CRYO</button><div class="rockers"><i></i><i></i></div><div class="dpad"><button id="dpad-up">▲</button><button id="dpad-left">◀</button><button id="dpad-right">▶</button><button id="dpad-down">▼</button></div></div>
+                </section>
+                <section class="right-wing" id="data-panel">
+                    <div class="data-screen"><div class="data-heading"><div><strong id="data-id">#025</strong><h1 id="data-name">PIKACHU</h1></div><div id="type-badges" class="type-badges"></div></div><div class="metrics"><div><small>ESPECIE</small><b id="species">Pokémon Ratón</b></div><div><small>ALTURA</small><b id="height">0.4 m</b></div><div><small>PESO</small><b id="weight">6.0 kg</b></div></div><div class="flavor"><small>▣ REGISTRO OFICIAL KANTO:</small><p id="flavor">Cargando registro...</p></div><div class="stats"><div><span>PS (HP)</span><i id="stat-hp"></i><b id="value-hp">35</b></div><div><span>ATAQUE</span><i id="stat-atk"></i><b id="value-atk">55</b></div><div><span>DEFENSA</span><i id="stat-def"></i><b id="value-def">40</b></div><div><span>VELOCIDAD</span><i id="stat-spd"></i><b id="value-spd">90</b></div></div></div>
+                    <div class="keypad"><div class="keypad-title">MATRIZ DE ACCESO DIRECTO NUMÉRICO <span><button id="key-clear">C</button><button id="key-enter">E</button></span></div><div class="keys">${[1,2,3,4,5,6,7,8,9,0].map(number => `<button data-number="${number}">${number}</button>`).join('')}</div></div>
+                    <div class="catalog"><div><b>CATÁLOGO REGIONAL (#001 - #151)</b><span id="catalog-count">CARGANDO...</span></div><div id="roster" class="roster"></div></div>
+                </section>
+            </div>
+        </section>
     </main>
-    <footer>
-        <script type="module" src="./scripts.js"></script>
-    </footer>
+    <footer><span><i></i> DEX VOICE: ACTIVE</span><span>REGISTERED: 151 / 151 KANTO INDEX</span><span>SILPH CO. & PROF. OAK LABS · SYS VER 1.0.4-JP</span></footer>
+    <script type="module" src="./scripts.js"></script>
 </body>
 </html>
